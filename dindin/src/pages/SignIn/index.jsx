@@ -8,12 +8,12 @@ import { getItem, setItem } from "../../utils/localStorage";
 function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [senha, setSenha] = useState("");
   function redirectToSignUp() {
     navigate("/sign-up");
   }
 
-  useEffect(() => {
+    useEffect(() => {
     const token = getItem("token");
 
     if (token) {
@@ -25,19 +25,19 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      if (!email || !password) {
+      if (!email || !senha) {
         console.log("Preencha todos os campos!");
         return;
       }
 
       const response = await api.post("/login", {
         email,
-        password,
+        senha,
       });
 
-      const { token, user } = response.data;
+      const { token, usuario } = response.data;
       setItem("token", token);
-      setItem("userId", user.id);
+      setItem("userId", usuario.id);
 
       navigate("/main");
     } catch (error) {
@@ -81,8 +81,8 @@ function SignIn() {
           <span>Password</span>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
           />
           <button>Entrar</button>
         </form>
