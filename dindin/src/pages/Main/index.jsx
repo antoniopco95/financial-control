@@ -2,6 +2,8 @@ import "./style.css";
 import Logo from "../../assets/Logo.png";
 import Account from "../../assets/account.png";
 import Logout from "../../assets/logout.png";
+import Filter from "../../assets/filtro.png";
+import ArrowUp from "../../assets/arrowUp.png";
 import { removeItem } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +24,23 @@ function Main() {
         </div>
       </header>
       <div className="main-content">
-        
+        <div className="filter">
+          <img src={Filter} alt="filter" />
+          <p>Filtrar</p>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <th>
+                Data <img src={ArrowUp} alt="ArrowUp" />
+              </th>
+              <th>Dia da semana</th>
+              <th>Descrição</th>
+              <th>Categoria</th>
+              <th>Valor</th>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   );

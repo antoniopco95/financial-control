@@ -35,3 +35,22 @@ header .dindin {
   border-radius: 60px 60px 0px 0px;
   background: #fff;
 }
+
+.filter {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.1);
+}
+
+.filter p {
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-family: Lato;
+  font-weight: 700;
+}
