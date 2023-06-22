@@ -1,7 +1,7 @@
 import "./style.css";
 
 function Main() {
-  return;
+  return <h1>Main Content</h1>;
 }
 
 export default Main;

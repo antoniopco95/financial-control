@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Rubik:wght@400;500;700&display=swap");
+.sign-up-container {
+  width: 513px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #ffffff;
+}
+
+.sign-up-container h1 {
+  color: #7978d9;
+  font: 500 28px "Rubik", sans-serif;
+}
+
+form p {
+  margin-top: 5px;
+  align-self: center;
+  color: #7b61ff;
+  text-align: center;
+  font: 700 14px "Lato", sans-serif;
+}
+
+form p:hover {
+  cursor: pointer;
+}
