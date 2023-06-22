@@ -4,10 +4,11 @@ import Account from "../../assets/account.png";
 import Logout from "../../assets/logout.png";
 import Filter from "../../assets/filtro.png";
 import ArrowUp from "../../assets/arrowUp.png";
-import { removeItem } from "../../utils/localStorage";
+import { getItem, removeItem } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const userName = getItem("name");
   const navigate = useNavigate();
   function handleExit() {
     removeItem("token");
@@ -19,7 +20,7 @@ function Main() {
         <img className="dindin" src={Logo} alt="logo" />
         <div className="profile-container">
           <img src={Account} alt="account" />
-          <h1>Roberto</h1>
+          <h1>{userName}</h1>
           <img onClick={handleExit} src={Logout} alt="logout-button" />
         </div>
       </header>

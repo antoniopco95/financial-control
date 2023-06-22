@@ -13,7 +13,7 @@ function SignIn() {
     navigate("/sign-up");
   }
 
-    useEffect(() => {
+  useEffect(() => {
     const token = getItem("token");
 
     if (token) {
@@ -38,6 +38,7 @@ function SignIn() {
       const { token, usuario } = response.data;
       setItem("token", token);
       setItem("userId", usuario.id);
+      setItem("name", usuario.nome);
 
       navigate("/main");
     } catch (error) {
