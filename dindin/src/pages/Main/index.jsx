@@ -6,13 +6,32 @@ import Filter from "../../assets/filtro.png";
 import ArrowUp from "../../assets/arrowUp.png";
 import { getItem, removeItem } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TransactionModal from "../../components/TransactionModal";
+import TableLine from "../../components/TableLine";
+import api from "../../services/api";
 
 function Main() {
   const userName = getItem("name");
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
+  const [options, setOptions] = useState([]);
+  const token = getItem("token");
+  useEffect(() => {
+    getOptions();
+  }, []);
+  async function getOptions() {
+    try {
+      const response = await api.get("/categoria", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setOptions(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   function closeModal() {
     setModal(!modal);
   }
@@ -52,6 +71,7 @@ function Main() {
             <span className="table-header-title5">Valor</span>
           </div>
         </div>
+        <TableLine/>
         <div className="right-side">
           <div className="resume">
             <h1>Resumo</h1>
@@ -75,7 +95,7 @@ function Main() {
           >
             Adicionar Registro
           </button>
-          {modal && <TransactionModal close={closeModal} />}
+          {modal && <TransactionModal close={closeModal} category={options} />}
         </div>
       </div>
     </div>
