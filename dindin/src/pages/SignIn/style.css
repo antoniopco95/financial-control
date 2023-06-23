@@ -117,7 +117,7 @@ form input {
   margin-bottom: 10px;
 }
 
-form button {
+form .btn-login {
   width: 449px;
   height: 48px;
   border-radius: 5px;

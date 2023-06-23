@@ -85,7 +85,7 @@ function SignIn() {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
-          <button>Entrar</button>
+          <button className="btn-login">Entrar</button>
         </form>
       </div>
     </div>

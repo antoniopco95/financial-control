@@ -9,6 +9,19 @@
   background: #ffffff;
 }
 
+.btn-signup {
+  width: 449px;
+  height: 53px;
+  border-radius: 5px;
+  background: #7978d9;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-family: Rubik;
+  font-weight: 700;
+  border: none;
+}
+
 .sign-up-container h1 {
   color: #7978d9;
   font: 500 28px "Rubik", sans-serif;

@@ -75,7 +75,7 @@ function SignUp() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button>Cadastrar</button>
+          <button className="btn-signup">Cadastrar</button>
           <p onClick={redirectToSignIn}>Já tem cadastro? Clique aqui</p>
         </form>
       </div>
