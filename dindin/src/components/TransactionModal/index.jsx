@@ -1,7 +1,9 @@
 import "./style.css";
 import X from "../../assets/x.png";
+import { useState } from "react";
 
 function TransactionModal({ close }) {
+  const [trasactionType, setTransactionType] = useState("saida");
   return (
     <div className="modal">
       <div className="modal-content">
@@ -12,8 +14,20 @@ function TransactionModal({ close }) {
 
         <form action="">
           <div className="btns">
-            <button className="btn-blue">Entrada</button>
-            <button className="btn-red">Saída</button>
+            <button
+              type="button"
+              onClick={() => setTransactionType("entrada")}
+              className={trasactionType === "entrada" ? "btn-blue" : "btn-gray"}
+            >
+              Entrada
+            </button>
+            <button
+              type="button"
+              onClick={() => setTransactionType("saida")}
+              className={trasactionType === "saida" ? "btn-red" : "btn-gray"}
+            >
+              Saída
+            </button>
           </div>
           <h3>Valor</h3>
           <input type="number" />

@@ -36,7 +36,7 @@
 }
 
 .modal-content img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal-content .btns {
@@ -89,10 +89,23 @@
   display: flex;
 }
 
-.btn-blue {
+.btn-gray {
   width: 244.5px;
   height: 56px;
   background-color: #b9b9b9;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-family: Rubik;
+  font-weight: 700;
+}
+
+.btn-blue {
+  width: 244.5px;
+  height: 56px;
+  background-color: #3A9FF1;
   border: none;
   border-radius: 5px;
   color: #fff;
