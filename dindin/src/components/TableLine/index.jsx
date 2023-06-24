@@ -4,13 +4,16 @@ import Trash from "../../assets/delete.png";
 import api from "../../services/api";
 import { useState } from "react";
 import { getItem } from "../../utils/localStorage";
+import { format } from "date-fns";
 
 function TableLine({ listTransaction }) {
   return (
     <>
       {listTransaction.map((item) => (
         <div key={item.id} className="line-content">
-          <span className="line1">{item.data}</span>
+          <span className="line1">
+            {format(new Date(item.data), "dd/MM/yyy")}
+          </span>
           <span className="line2">Sexta</span>
           <span className="line3">{item.categoria_nome}</span>
           <span className="line4">{item.descricao}</span>
