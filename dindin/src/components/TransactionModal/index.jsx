@@ -17,10 +17,14 @@ function TransactionModal({ close, category }) {
     descricao: "",
   });
   const token = getItem("token");
-  /* 
+
+  /* useEffect(() => {
+    console.log(transactions);
+  }, [transactions]); */
+
   useEffect(() => {
     handleListTransactions();
-  }, []); */
+  }, []);
 
   useEffect(() => {
     setTransactionForm((prevState) => ({
@@ -74,18 +78,14 @@ function TransactionModal({ close, category }) {
           },
         }
       );
-      setTransactions((prevTransactions) => [
-        ...prevTransactions,
-        response.data,
-      ]);
-      console.log(transactions);
+      setTransactions(response.data);
       handleClearForm();
-      /* handleListTransactions(); */
+      handleListTransactions();
     } catch (error) {
       console.log(error);
     }
   }
-  /* async function handleListTransactions() {
+  async function handleListTransactions() {
     try {
       const response = await api.get("/transacao", {
         headers: {
@@ -97,7 +97,7 @@ function TransactionModal({ close, category }) {
     } catch (error) {
       console.log(error);
     }
-  } */
+  }
 
   function handleClearForm() {
     setTransactionType("saida");

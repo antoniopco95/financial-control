@@ -20,6 +20,7 @@ function Main() {
   useEffect(() => {
     getOptions();
   }, []);
+  
   async function getOptions() {
     try {
       const response = await api.get("/categoria", {
