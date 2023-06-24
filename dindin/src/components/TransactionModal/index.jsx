@@ -3,6 +3,7 @@ import X from "../../assets/x.png";
 import { useState, useEffect } from "react";
 import { getItem } from "../../utils/localStorage";
 import api from "../../services/api";
+import { format } from "date-fns";
 
 function TransactionModal({ close, category, handleListTransactions }) {
   const [transactions, setTransactions] = useState([]);
@@ -64,6 +65,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
         console.log("Todos os campos são obrigatórios!");
         return;
       }
+
       const response = await api.post(
         "/transacao",
         { ...transactionForm },
@@ -73,6 +75,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
           },
         }
       );
+
       setTransactions(response.data);
       handleClearForm();
       await handleListTransactions();
