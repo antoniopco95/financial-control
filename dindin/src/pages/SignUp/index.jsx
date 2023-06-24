@@ -25,6 +25,7 @@ function SignUp() {
       }
       if (senha !== confirmPassword) {
         console.log("A senha e a confirmação da senha devem ser iguais!");
+        return;
       }
 
       const response = await api.post("/usuario", {

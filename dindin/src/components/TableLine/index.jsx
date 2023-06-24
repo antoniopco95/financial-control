@@ -1,6 +1,9 @@
 import "./style.css";
 import Pencil from "../../assets/edit.png";
 import Trash from "../../assets/delete.png";
+import api from "../../services/api";
+import { useState } from "react";
+import { getItem } from "../../utils/localStorage";
 
 function TableLine() {
   return (
