@@ -16,11 +16,31 @@ function Main() {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [options, setOptions] = useState([]);
+  const [listTransaction, setListTransaction] = useState([]);
   const token = getItem("token");
+  useEffect(() => {}, [listTransaction]);
+
   useEffect(() => {
     getOptions();
   }, []);
-  
+
+  useEffect(() => {
+    handleListTransactions();
+  }, []);
+
+  async function handleListTransactions() {
+    try {
+      const response = await api.get("/transacao", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setListTransaction(response.data);
+      console.log(listTransaction);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function getOptions() {
     try {
       const response = await api.get("/categoria", {
@@ -72,7 +92,10 @@ function Main() {
             <span className="table-header-title5">Valor</span>
           </div>
         </div>
-        <TableLine/>
+        <TableLine
+          listTransaction={listTransaction}
+          handleListTransactions={handleListTransactions}
+        />
         <div className="right-side">
           <div className="resume">
             <h1>Resumo</h1>

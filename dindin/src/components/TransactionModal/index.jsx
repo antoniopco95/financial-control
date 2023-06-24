@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import { getItem } from "../../utils/localStorage";
 import api from "../../services/api";
 
-function TransactionModal({ close, category }) {
+function TransactionModal({ close, category, handleListTransactions }) {
   const [transactions, setTransactions] = useState([]);
-  const [listTransaction, setListTransaction] = useState([]);
   const [transactionType, setTransactionType] = useState("saida");
   const [select, setSelect] = useState({ id: "", categoria: "" });
   const [transactionForm, setTransactionForm] = useState({
@@ -21,10 +20,6 @@ function TransactionModal({ close, category }) {
   /* useEffect(() => {
     console.log(transactions);
   }, [transactions]); */
-
-  useEffect(() => {
-    handleListTransactions();
-  }, []);
 
   useEffect(() => {
     setTransactionForm((prevState) => ({
@@ -81,19 +76,6 @@ function TransactionModal({ close, category }) {
       setTransactions(response.data);
       handleClearForm();
       handleListTransactions();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  async function handleListTransactions() {
-    try {
-      const response = await api.get("/transacao", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setListTransaction(response.data);
-      console.log(listTransaction);
     } catch (error) {
       console.log(error);
     }
