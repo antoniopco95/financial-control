@@ -92,10 +92,7 @@ function Main() {
             <span className="table-header-title5">Valor</span>
           </div>
         </div>
-        <TableLine
-          listTransaction={listTransaction}
-          handleListTransactions={handleListTransactions}
-        />
+        <TableLine listTransaction={listTransaction} />
         <div className="right-side">
           <div className="resume">
             <h1>Resumo</h1>
@@ -119,7 +116,7 @@ function Main() {
           >
             Adicionar Registro
           </button>
-          {modal && <TransactionModal close={closeModal} category={options} />}
+          {modal && <TransactionModal close={closeModal} category={options} handleListTransactions={handleListTransactions}/>}
         </div>
       </div>
     </div>

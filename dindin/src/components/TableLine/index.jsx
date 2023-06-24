@@ -14,7 +14,7 @@ function TableLine({ listTransaction }) {
           <span className="line2">Sexta</span>
           <span className="line3">{item.categoria_nome}</span>
           <span className="line4">{item.descricao}</span>
-          <span className="line5">{item.valor}</span>
+          <span className="line5">R$ {item.valor}</span>
           <div className="icons">
             <img src={Pencil} alt="pencil" />
             <img src={Trash} alt="trash" />

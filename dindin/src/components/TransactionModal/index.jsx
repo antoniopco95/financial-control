@@ -75,7 +75,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
       );
       setTransactions(response.data);
       handleClearForm();
-      handleListTransactions();
+      await handleListTransactions();
     } catch (error) {
       console.log(error);
     }
