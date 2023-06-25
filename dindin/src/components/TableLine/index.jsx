@@ -2,27 +2,29 @@ import "./style.css";
 import Pencil from "../../assets/edit.png";
 import Trash from "../../assets/delete.png";
 import api from "../../services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getItem } from "../../utils/localStorage";
 import { format } from "date-fns";
+import TransactionModal from "../TransactionModal";
 
-function TableLine({ listTransaction, handleListTransactions }) {
+function TableLine({ listTransaction, handleListTransactions, handleExtract }) {
   const token = getItem("token");
+
   function chooseDay(data) {
     if (new Date().getDay(data) === 0) {
-      return "Segunda";
-    } else if (new Date(data).getDay() === 1) {
-      return "Terça";
-    } else if (new Date(data).getDay() === 2) {
-      return "Quarta";
-    } else if (new Date(data).getDay() === 3) {
-      return "Quinta";
-    } else if (new Date(data).getDay() === 4) {
-      return "Sexta";
-    } else if (new Date(data).getDay() === 5) {
-      return "Sábado";
-    } else if (new Date(data).getDay() === 6) {
       return "Domingo";
+    } else if (new Date(data).getDay() === 1) {
+      return "Segunda";
+    } else if (new Date(data).getDay() === 2) {
+      return "Terça";
+    } else if (new Date(data).getDay() === 3) {
+      return "Quarta";
+    } else if (new Date(data).getDay() === 4) {
+      return "Quinta";
+    } else if (new Date(data).getDay() === 5) {
+      return "Sexta";
+    } else if (new Date(data).getDay() === 6) {
+      return "Sábado";
     }
   }
 
@@ -33,12 +35,17 @@ function TableLine({ listTransaction, handleListTransactions }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log();
       await handleListTransactions();
+      await handleExtract();
     } catch (error) {
       console.log(error);
     }
   }
+  let Real = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   return (
     <>
       {listTransaction.map((item) => (
@@ -49,9 +56,9 @@ function TableLine({ listTransaction, handleListTransactions }) {
           <span className="line2">{chooseDay(item.data)}</span>
           <span className="line3">{item.descricao}</span>
           <span className="line4">{item.categoria_nome}</span>
-          <span className="line5">R$ {item.valor}</span>
+          <span className="line5">{Real.format(item.valor)}</span>
           <div className="icons">
-            <img src={Pencil} alt="pencil" />
+            <img className="edit-transaction" src={Pencil} alt="pencil" />
             <img
               className="delete-transaction"
               src={Trash}

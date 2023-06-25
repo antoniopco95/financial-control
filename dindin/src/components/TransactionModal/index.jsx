@@ -5,7 +5,12 @@ import { getItem } from "../../utils/localStorage";
 import api from "../../services/api";
 import { format } from "date-fns";
 
-function TransactionModal({ close, category, handleListTransactions }) {
+function TransactionModal({
+  close,
+  category,
+  handleListTransactions,
+  handleExtract,
+}) {
   const [transactions, setTransactions] = useState([]);
   const [transactionType, setTransactionType] = useState("saida");
   const [select, setSelect] = useState({ id: "", categoria: "" });
@@ -79,6 +84,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
       setTransactions(response.data);
       handleClearForm();
       await handleListTransactions();
+      await handleExtract();
     } catch (error) {
       console.log(error);
     }
@@ -127,6 +133,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
           <h3>Valor</h3>
           <input
             type="number"
+            required
             name="valor"
             value={transactionForm.valor}
             onChange={handleChangeInput}
@@ -134,6 +141,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
           <h3>Categoria</h3>
           <select
             value={select.descricao}
+            required
             onChange={(event) => handleChangeSelect(event)}
           >
             <option>Selecione uma categoria</option>
@@ -147,6 +155,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
           <input
             type="date"
             value={transactionForm.data}
+            required
             name="data"
             onChange={handleChangeInput}
           />
@@ -154,6 +163,7 @@ function TransactionModal({ close, category, handleListTransactions }) {
           <input
             type="text"
             value={transactionForm.descricao}
+            required
             name="descricao"
             onChange={handleChangeInput}
           />

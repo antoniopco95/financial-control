@@ -12,3 +12,7 @@
 .line-content .delete-transaction:hover {
   cursor: pointer;
 }
+
+.line-content .edit-transaction:hover {
+  cursor: pointer;
+}

@@ -17,7 +17,12 @@ function Main() {
   const [modal, setModal] = useState(false);
   const [options, setOptions] = useState([]);
   const [listTransaction, setListTransaction] = useState([]);
+  const [extract, setExtract] = useState({ entrada: 0, saida: 0 });
   const token = getItem("token");
+  let Real = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
   useEffect(() => {}, [listTransaction]);
 
   useEffect(() => {
@@ -27,6 +32,26 @@ function Main() {
   useEffect(() => {
     handleListTransactions();
   }, []);
+
+  useEffect(() => {
+    handleExtract();
+  }, []);
+
+  async function handleExtract() {
+    try {
+      const response = await api.get("/transacao/extrato", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setExtract({
+        entrada: response.data.entrada,
+        saida: response.data.saida,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function handleListTransactions() {
     try {
@@ -95,22 +120,23 @@ function Main() {
         <TableLine
           listTransaction={listTransaction}
           handleListTransactions={handleListTransactions}
+          handleExtract={handleExtract}
         />
         <div className="right-side">
           <div className="resume">
             <h1>Resumo</h1>
             <div className="resume-in">
               <h2>Entradas</h2>
-              <h3>R$ 500,00</h3>
+              <h3>{Real.format(extract.entrada)}</h3>
             </div>
             <div className="resume-out">
               <h2>Saídas</h2>
-              <h3>R$ 200,00</h3>
+              <h3>{Real.format(extract.saida)}</h3>
             </div>
             <div className="line"></div>
             <div className="resume-balance">
               <h2>Saldo</h2>
-              <h3>R$ 300,00</h3>
+              <h3>{Real.format(extract.entrada - extract.saida)}</h3>
             </div>
           </div>
           <button
@@ -124,6 +150,7 @@ function Main() {
               close={closeModal}
               category={options}
               handleListTransactions={handleListTransactions}
+              handleExtract={handleExtract}
             />
           )}
         </div>
