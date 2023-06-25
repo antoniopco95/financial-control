@@ -6,7 +6,8 @@ import { useState } from "react";
 import { getItem } from "../../utils/localStorage";
 import { format } from "date-fns";
 
-function TableLine({ listTransaction }) {
+function TableLine({ listTransaction, handleListTransactions }) {
+  const token = getItem("token");
   function chooseDay(data) {
     if (new Date().getDay(data) === 0) {
       return "Segunda";
@@ -24,6 +25,20 @@ function TableLine({ listTransaction }) {
       return "Domingo";
     }
   }
+
+  async function handleDeleteTransaction(id) {
+    try {
+      const response = await api.delete(`/transacao/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log();
+      await handleListTransactions();
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       {listTransaction.map((item) => (
@@ -32,12 +47,17 @@ function TableLine({ listTransaction }) {
             {format(new Date(item.data), "dd/MM/yyy")}
           </span>
           <span className="line2">{chooseDay(item.data)}</span>
-          <span className="line3">{item.categoria_nome}</span>
-          <span className="line4">{item.descricao}</span>
+          <span className="line3">{item.descricao}</span>
+          <span className="line4">{item.categoria_nome}</span>
           <span className="line5">R$ {item.valor}</span>
           <div className="icons">
             <img src={Pencil} alt="pencil" />
-            <img src={Trash} alt="trash" />
+            <img
+              className="delete-transaction"
+              src={Trash}
+              alt="trash"
+              onClick={() => handleDeleteTransaction(item.id)}
+            />
           </div>
         </div>
       ))}
