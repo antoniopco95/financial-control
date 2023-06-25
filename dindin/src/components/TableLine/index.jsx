@@ -56,7 +56,9 @@ function TableLine({ listTransaction, handleListTransactions, handleExtract }) {
           <span className="line2">{chooseDay(item.data)}</span>
           <span className="line3">{item.descricao}</span>
           <span className="line4">{item.categoria_nome}</span>
-          <span className="line5">{Real.format(item.valor)}</span>
+          <span className={item.tipo === "saida" ? "outcome" : "income"}>
+            {Real.format(item.valor)}
+          </span>
           <div className="icons">
             <img className="edit-transaction" src={Pencil} alt="pencil" />
             <img

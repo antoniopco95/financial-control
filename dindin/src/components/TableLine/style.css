@@ -16,3 +16,17 @@
 .line-content .edit-transaction:hover {
   cursor: pointer;
 }
+
+.income {
+  color: #645ffb;
+  font-size: 13px;
+  font-family: Rubik;
+  font-weight: 500;
+}
+
+.outcome {
+  color: #fa8c10;
+  font-size: 13px;
+  font-family: Rubik;
+  font-weight: 500;
+}
