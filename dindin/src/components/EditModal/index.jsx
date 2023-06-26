@@ -13,7 +13,7 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
     tipo: transactionType,
     valor: information.valor,
     categoria_id: information.categoria_id,
-    data: format(new Date(information.data), "dd/MM/yyyy"),
+    data: format(new Date(information.data), "yyyy-MM-dd"),
     descricao: information.descricao,
   });
   console.log(information);
@@ -40,10 +40,20 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
 
   function handleChangeInput(event) {
     const { name, value } = event.target;
-    setTransactionForm((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+
+    if (name === "data") {
+      const formattedDate = format(new Date(value), "yyyy/MM/dd");
+
+      setTransactionForm((prevState) => ({
+        ...prevState,
+        [name]: formattedDate,
+      }));
+    } else {
+      setTransactionForm((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   }
 
   function handleChangeSelect(event) {
@@ -60,16 +70,19 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
       if (
         !transactionForm.valor ||
         transactionForm.valor === 0 ||
-        !transactionForm.categoria_id ||
+        !information.categoria_id ||
         !transactionForm.descricao ||
         !transactionForm.data
       ) {
+        console.log(transactionForm.valor);
+        console.log(information.categoria_id);
+        console.log(transactionForm.descricao);
+        console.log(transactionForm.data);
         console.log("Todos os campos são obrigatórios!");
         return;
       }
-
-      const response = await api.post(
-        "/transacao",
+      const response = await api.put(
+        `/transacao/${information.id}`,
         { ...transactionForm },
         {
           headers: {
