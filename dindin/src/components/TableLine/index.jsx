@@ -6,9 +6,24 @@ import { useEffect, useState } from "react";
 import { getItem } from "../../utils/localStorage";
 import { format } from "date-fns";
 import TransactionModal from "../TransactionModal";
+import EditModal from "../EditModal";
 
-function TableLine({ listTransaction, handleListTransactions, handleExtract }) {
+function TableLine({
+  listTransaction,
+  handleListTransactions,
+  handleExtract,
+  options,
+}) {
   const token = getItem("token");
+  const [isEditing, setIsEditing] = useState(null);
+
+  function closeEditModal(content) {
+    if (!isEditing) {
+      setIsEditing(content);
+      return;
+    }
+    setIsEditing(null);
+  }
 
   function chooseDay(data) {
     if (new Date().getDay(data) === 0) {
@@ -60,7 +75,13 @@ function TableLine({ listTransaction, handleListTransactions, handleExtract }) {
             {Real.format(item.valor)}
           </span>
           <div className="icons">
-            <img className="edit-transaction" src={Pencil} alt="pencil" />
+            <img
+              className="edit-transaction"
+              src={Pencil}
+              alt="pencil"
+              onClick={() => closeEditModal(item)}
+            />
+
             <img
               className="delete-transaction"
               src={Trash}
@@ -70,6 +91,15 @@ function TableLine({ listTransaction, handleListTransactions, handleExtract }) {
           </div>
         </div>
       ))}
+      {isEditing && (
+        <EditModal
+          opcoes={options}
+          function1={handleListTransactions}
+          function2={handleExtract}
+          function3={closeEditModal}
+          information={isEditing}
+        />
+      )}
     </>
   );
 }

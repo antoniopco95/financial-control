@@ -119,6 +119,7 @@ function Main() {
         </div>
         <TableLine
           listTransaction={listTransaction}
+          options={options}
           handleListTransactions={handleListTransactions}
           handleExtract={handleExtract}
         />
