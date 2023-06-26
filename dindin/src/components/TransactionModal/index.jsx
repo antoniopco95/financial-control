@@ -70,10 +70,24 @@ function TransactionModal({
         console.log("Todos os campos são obrigatórios!");
         return;
       }
+      const splitedDate = transactionForm.data.split("-");
+      const formatedDate = new Date(
+        splitedDate[0],
+        splitedDate[1] - 1,
+        splitedDate[2],
+        20
+      );
+      const newTransaction = {
+        tipo: transactionType,
+        descricao: transactionForm.descricao,
+        valor: transactionForm.valor,
+        data: formatedDate,
+        categoria_id: transactionForm.categoria_id,
+      };
 
       const response = await api.post(
         "/transacao",
-        { ...transactionForm },
+        { ...newTransaction },
         {
           headers: {
             Authorization: `Bearer ${token}`,
