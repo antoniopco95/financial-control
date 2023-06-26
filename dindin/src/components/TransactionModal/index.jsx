@@ -23,10 +23,6 @@ function TransactionModal({
   });
   const token = getItem("token");
 
-  /* useEffect(() => {
-    console.log(transactions);
-  }, [transactions]); */
-
   useEffect(() => {
     setTransactionForm((prevState) => ({
       ...prevState,
@@ -93,7 +89,6 @@ function TransactionModal({
           },
         }
       );
-      console.log(newTransaction);
       setTransactions(response.data);
       handleClearForm();
       await handleListTransactions();

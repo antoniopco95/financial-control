@@ -61,7 +61,6 @@ function Main() {
         },
       });
       setListTransaction(response.data);
-      console.log(listTransaction);
     } catch (error) {
       console.log(error);
     }

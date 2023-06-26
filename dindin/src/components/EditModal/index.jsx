@@ -16,12 +16,10 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
     data: format(new Date(information.data), "yyyy-MM-dd"),
     descricao: information.descricao,
   });
-  console.log(information.categoria_id);
 
   const token = getItem("token");
 
   useEffect(() => {
-    console.log(transactions);
   }, [transactions]);
 
   useEffect(() => {
@@ -84,7 +82,6 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
           },
         }
       );
-      console.log(transactionForm);
       setTransactions(response.data);
       handleClearForm();
       await function1();
