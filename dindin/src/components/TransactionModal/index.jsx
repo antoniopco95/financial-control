@@ -74,8 +74,7 @@ function TransactionModal({
       const formatedDate = new Date(
         splitedDate[0],
         splitedDate[1] - 1,
-        splitedDate[2],
-        20
+        splitedDate[2]
       );
       const newTransaction = {
         tipo: transactionType,
@@ -94,7 +93,7 @@ function TransactionModal({
           },
         }
       );
-
+      console.log(newTransaction);
       setTransactions(response.data);
       handleClearForm();
       await handleListTransactions();

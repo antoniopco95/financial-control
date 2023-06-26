@@ -8,7 +8,7 @@ import { format } from "date-fns";
 function EditModal({ opcoes, function1, function2, function3, information }) {
   const [transactions, setTransactions] = useState([]);
   const [transactionType, setTransactionType] = useState(information.tipo);
-  const [select, setSelect] = useState({ id: "", categoria: "" });
+  const [select, setSelect] = useState({ id: information.categoria_id, categoria: "" });
   const [transactionForm, setTransactionForm] = useState({
     tipo: transactionType,
     valor: information.valor,
@@ -16,7 +16,7 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
     data: format(new Date(information.data), "yyyy-MM-dd"),
     descricao: information.descricao,
   });
-  console.log(information);
+  console.log(information.categoria_id);
 
   const token = getItem("token");
 
@@ -41,22 +41,14 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
   function handleChangeInput(event) {
     const { name, value } = event.target;
 
-    if (name === "data") {
-      const formattedDate = format(new Date(value), "yyyy/MM/dd");
-
-      setTransactionForm((prevState) => ({
-        ...prevState,
-        [name]: formattedDate,
-      }));
-    } else {
-      setTransactionForm((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
+    setTransactionForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   function handleChangeSelect(event) {
+    console.log(event);
     const localOptions = [...opcoes];
     const myOption = localOptions.find(
       (item) => item.id === parseInt(event.target.value)
@@ -74,23 +66,25 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
         !transactionForm.descricao ||
         !transactionForm.data
       ) {
-        console.log(transactionForm.valor);
-        console.log(information.categoria_id);
-        console.log(transactionForm.descricao);
-        console.log(transactionForm.data);
         console.log("Todos os campos são obrigatórios!");
         return;
       }
+      const splitedDate = transactionForm.data.split("-");
+      const formatedDate = new Date(
+        splitedDate[0],
+        splitedDate[1] - 1,
+        splitedDate[2]
+      );
       const response = await api.put(
         `/transacao/${information.id}`,
-        { ...transactionForm },
+        { ...transactionForm, data: formatedDate },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
+      console.log(transactionForm);
       setTransactions(response.data);
       handleClearForm();
       await function1();
@@ -150,7 +144,7 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
           />
           <h3>Categoria</h3>
           <select
-            value={select.descricao}
+            value={select.id}
             required
             onChange={(event) => handleChangeSelect(event)}
           >
