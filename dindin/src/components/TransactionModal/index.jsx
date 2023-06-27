@@ -3,7 +3,6 @@ import X from "../../assets/x.png";
 import { useState, useEffect } from "react";
 import { getItem } from "../../utils/localStorage";
 import api from "../../services/api";
-import { format } from "date-fns";
 
 function TransactionModal({
   close,
@@ -11,7 +10,6 @@ function TransactionModal({
   handleListTransactions,
   handleExtract,
 }) {
-  const [transactions, setTransactions] = useState([]);
   const [transactionType, setTransactionType] = useState("saida");
   const [select, setSelect] = useState({ id: "", categoria: "" });
   const [transactionForm, setTransactionForm] = useState({
@@ -80,7 +78,7 @@ function TransactionModal({
         categoria_id: transactionForm.categoria_id,
       };
 
-      const response = await api.post(
+      await api.post(
         "/transacao",
         { ...newTransaction },
         {
@@ -89,7 +87,6 @@ function TransactionModal({
           },
         }
       );
-      setTransactions(response.data);
       handleClearForm();
       await handleListTransactions();
       await handleExtract();

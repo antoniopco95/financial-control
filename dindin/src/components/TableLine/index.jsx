@@ -2,10 +2,9 @@ import "./style.css";
 import Pencil from "../../assets/edit.png";
 import Trash from "../../assets/delete.png";
 import api from "../../services/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getItem } from "../../utils/localStorage";
 import { format } from "date-fns";
-import TransactionModal from "../TransactionModal";
 import EditModal from "../EditModal";
 
 function TableLine({
@@ -45,7 +44,7 @@ function TableLine({
 
   async function handleDeleteTransaction(id) {
     try {
-      const response = await api.delete(`/transacao/${id}`, {
+      await api.delete(`/transacao/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

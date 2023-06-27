@@ -6,9 +6,11 @@ import api from "../../services/api";
 import { format } from "date-fns";
 
 function EditModal({ opcoes, function1, function2, function3, information }) {
-  const [transactions, setTransactions] = useState([]);
   const [transactionType, setTransactionType] = useState(information.tipo);
-  const [select, setSelect] = useState({ id: information.categoria_id, categoria: "" });
+  const [select, setSelect] = useState({
+    id: information.categoria_id,
+    categoria: "",
+  });
   const [transactionForm, setTransactionForm] = useState({
     tipo: transactionType,
     valor: information.valor,
@@ -18,9 +20,6 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
   });
 
   const token = getItem("token");
-
-  useEffect(() => {
-  }, [transactions]);
 
   useEffect(() => {
     setTransactionForm((prevState) => ({
@@ -46,7 +45,6 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
   }
 
   function handleChangeSelect(event) {
-    console.log(event);
     const localOptions = [...opcoes];
     const myOption = localOptions.find(
       (item) => item.id === parseInt(event.target.value)
@@ -73,7 +71,7 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
         splitedDate[1] - 1,
         splitedDate[2]
       );
-      const response = await api.put(
+      await api.put(
         `/transacao/${information.id}`,
         { ...transactionForm, data: formatedDate },
         {
@@ -82,7 +80,6 @@ function EditModal({ opcoes, function1, function2, function3, information }) {
           },
         }
       );
-      setTransactions(response.data);
       handleClearForm();
       await function1();
       await function2();
