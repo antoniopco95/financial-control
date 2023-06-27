@@ -18,6 +18,7 @@ function Main() {
   const [options, setOptions] = useState([]);
   const [listTransaction, setListTransaction] = useState([]);
   const [extract, setExtract] = useState({ entrada: 0, saida: 0 });
+  const [sortOrder, setSortOrder] = useState(null);
   const token = getItem("token");
   let Real = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -84,6 +85,16 @@ function Main() {
     removeItem("token");
     navigate("/");
   }
+  function handleSortOrder() {
+    if (sortOrder === null) {
+      setSortOrder("asc"); 
+    } else if (sortOrder === "asc") {
+      setSortOrder("desc"); 
+    } else if (sortOrder === "desc") {
+      setSortOrder(null); 
+    }
+  }
+
   return (
     <div className="container-main">
       <header>
@@ -108,7 +119,7 @@ function Main() {
         <div className="table">
           <div className="table-header">
             <span className="table-header-title1">
-              Data <img src={ArrowUp} alt="ArrowUp" />
+              Data <img src={ArrowUp} alt="ArrowUp" onClick={handleSortOrder} />
             </span>
             <span className="table-header-title2">Dia da semana</span>
             <span className="table-header-title3">Descrição</span>
@@ -121,6 +132,7 @@ function Main() {
           options={options}
           handleListTransactions={handleListTransactions}
           handleExtract={handleExtract}
+          sortOrder={sortOrder}
         />
         <div className="right-side">
           <div className="resume">

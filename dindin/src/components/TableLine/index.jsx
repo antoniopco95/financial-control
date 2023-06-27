@@ -12,6 +12,8 @@ function TableLine({
   handleListTransactions,
   handleExtract,
   options,
+  sortAscending,
+  sortOrder,
 }) {
   const token = getItem("token");
   const [isEditing, setIsEditing] = useState(null);
@@ -60,9 +62,22 @@ function TableLine({
     currency: "BRL",
   });
 
+  function sortListByDate() {
+    let sortedList = [...listTransaction];
+
+    if (sortOrder === "asc") {
+      sortedList.sort((a, b) => new Date(a.data) - new Date(b.data)); 
+    } else if (sortOrder === "desc") {
+      sortedList.sort((a, b) => new Date(b.data) - new Date(a.data)); 
+    }
+
+    return sortedList;
+  }
+
+  const sortedList = sortListByDate();
   return (
     <>
-      {listTransaction.map((item) => (
+      {sortedList.map((item) => (
         <div key={item.id} className="line-content">
           <span className="line1">
             {format(new Date(item.data), "dd/MM/yyy")}
