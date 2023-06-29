@@ -70,7 +70,7 @@ header .dindin {
   flex-direction: column;
   margin-top: 26px;
   margin-left: 106px;
-  width: 980px;
+  width: 964px;
   height: 58px;
   border-radius: 10px;
   background: #fafafa;
@@ -80,24 +80,45 @@ header .dindin {
 .table .table-header {
   display: flex;
   width: 100%;
-  justify-content: space-around;
   align-items: center;
-  margin-right: 80px;
 }
 
 .table .table-header span {
-  display: flex;
-  align-items: center;
-
-  justify-content: center;
   color: #000;
   text-align: center;
   font-size: 14px;
   font-family: Lato;
   font-weight: 700;
 }
+
 .table .table-header .table-header-title1 img {
   margin-left: 3px;
+  margin-right: 93px;
+}
+
+.table-header-title1 {
+  margin-left: 27.35px;
+}
+
+.table-header-title2 {
+  margin-right: 29px;
+}
+
+.table-header-title3 {
+  width: 255px;
+  text-align: center;
+  margin-right: 14px;
+}
+
+.table-header-title4 {
+  width: 118px;
+  text-align: center;
+  margin-right: 65px;
+}
+
+.table-header-title5 {
+  width: 85px;
+  text-align: center;
 }
 
 .right-side {
@@ -181,7 +202,7 @@ header .dindin {
   font-weight: 500;
 }
 
- .btn-add-transaction {
+.btn-add-transaction {
   width: 236px;
   height: 46px;
   border-radius: 5px;

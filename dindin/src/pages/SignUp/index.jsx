@@ -33,10 +33,6 @@ function SignUp() {
         email,
         senha,
       });
-      /* 
-      const { token, user } = response.data;
-      setItem("token", token);
-      setItem("userId", user.id); */
 
       navigate("/");
     } catch (error) {

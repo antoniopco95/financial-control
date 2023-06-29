@@ -1,10 +1,9 @@
 .line-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 26px;
   margin-left: 106px;
-  width: 980px;
+  width: 964px;
   height: 58px;
   border-bottom: 1px solid#E0E0E0;
 }
@@ -29,4 +28,40 @@
   font-size: 13px;
   font-family: Rubik;
   font-weight: 500;
+}
+
+.line1 {
+  width: 102px;
+  margin-left: 27.35px;
+  margin-right: 46px;
+  font-weight: bold;
+}
+
+.line2 {
+  width: 68.31px;
+  text-align: center;
+  margin-right: 55.69px;
+}
+
+.line3 {
+  width: 227px;
+  text-align: center;
+  margin-right: 35px;
+}
+
+.line4 {
+  width: 105px;
+  text-align: center;
+  margin-right: 73px;
+}
+
+.outcome,
+.income {
+  width: 84px;
+  text-align: center;
+  margin-right: 45px;
+}
+
+.edit-transaction {
+  margin-right: 13px;
 }

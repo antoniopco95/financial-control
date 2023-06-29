@@ -66,9 +66,9 @@ function TableLine({
     let sortedList = [...listTransaction];
 
     if (sortOrder === "asc") {
-      sortedList.sort((a, b) => new Date(a.data) - new Date(b.data)); 
+      sortedList.sort((a, b) => new Date(a.data) - new Date(b.data));
     } else if (sortOrder === "desc") {
-      sortedList.sort((a, b) => new Date(b.data) - new Date(a.data)); 
+      sortedList.sort((a, b) => new Date(b.data) - new Date(a.data));
     }
 
     return sortedList;
