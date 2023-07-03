@@ -12,7 +12,6 @@ function TableLine({
   handleListTransactions,
   handleExtract,
   options,
-  sortAscending,
   sortOrder,
 }) {
   const token = getItem("token");
@@ -27,7 +26,7 @@ function TableLine({
   }
 
   function chooseDay(data) {
-    if (new Date().getDay(data) === 0) {
+    if (new Date(data).getDay() === 0) {
       return "Domingo";
     } else if (new Date(data).getDay() === 1) {
       return "Segunda";
