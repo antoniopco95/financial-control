@@ -24,7 +24,6 @@ function Main() {
     style: "currency",
     currency: "BRL",
   });
-  useEffect(() => {}, [listTransaction]);
 
   useEffect(() => {
     getOptions();
