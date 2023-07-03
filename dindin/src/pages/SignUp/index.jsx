@@ -3,7 +3,6 @@ import Logo from "../../assets/Logo.png";
 import { useState } from "react";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { setItem } from "../../utils/localStorage";
 
 function SignUp() {
   const navigate = useNavigate();

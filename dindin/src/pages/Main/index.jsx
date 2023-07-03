@@ -65,6 +65,7 @@ function Main() {
       console.log(error);
     }
   }
+
   async function getOptions() {
     try {
       const response = await api.get("/categoria", {
@@ -77,13 +78,16 @@ function Main() {
       console.log(error);
     }
   }
+
   function closeModal() {
     setModal(!modal);
   }
+  
   function handleExit() {
     removeItem("token");
     navigate("/");
   }
+
   function handleSortOrder() {
     if (sortOrder === null) {
       setSortOrder("asc"); 

@@ -16,6 +16,11 @@ function TableLine({
 }) {
   const token = getItem("token");
   const [isEditing, setIsEditing] = useState(null);
+  const sortedList = sortListByDate();
+  let Real = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   function closeEditModal(content) {
     if (!isEditing) {
@@ -56,10 +61,6 @@ function TableLine({
       console.log(error);
     }
   }
-  let Real = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
 
   function sortListByDate() {
     let sortedList = [...listTransaction];
@@ -73,7 +74,6 @@ function TableLine({
     return sortedList;
   }
 
-  const sortedList = sortListByDate();
   return (
     <>
       {sortedList.map((item) => (
