@@ -4,7 +4,6 @@ import "./index.css";
 import MyRoutes from "./routes";
 import { BrowserRouter } from "react-router-dom";
 import { inject } from '@vercel/analytics';
-
 inject();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
