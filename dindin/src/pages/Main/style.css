@@ -157,9 +157,9 @@ header .dindin {
 .resume-balance {
   width: 170px;
   height: 17px;
+  
   display: flex;
   align-items:center;
-  
   justify-content: space-between;
   
 }
