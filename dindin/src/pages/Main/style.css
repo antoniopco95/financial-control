@@ -59,7 +59,7 @@ header .dindin {
   color: #000;
   text-align: center;
   font-size: 12px;
-  font-family: Lato;
+  font-family: "Lato",sans-serif;
   font-weight: 700;
 }
 
@@ -87,7 +87,7 @@ header .dindin {
   color: #000;
   text-align: center;
   font-size: 14px;
-  font-family: Lato;
+  font-family: "Lato",sans-serif;
   font-weight: 700;
 }
 
@@ -148,16 +148,20 @@ header .dindin {
 .resume h1 {
   color: #2f2f2f;
   font-size: 18px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 700;
 }
 
 .resume-in,
 .resume-out,
 .resume-balance {
+  width: 170px;
+  height: 17px;
   display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
+  align-items:center;
+  
+  justify-content: space-between;
+  
 }
 
 .line {
@@ -170,35 +174,35 @@ header .dindin {
 .resume-out h2 {
   color: #2f2f2f;
   font-size: 13px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 500;
 }
 
 .resume-in h3 {
   color: #645ffb;
   font-size: 13px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 500;
 }
 
 .resume-out h3 {
   color: #fa8c10;
   font-size: 13px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 500;
 }
 
 .resume-balance h2 {
   color: #2f2f2f;
   font-size: 14px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 700;
 }
 
 .resume-balance h3 {
   color: #3a9ff1;
   font-size: 14px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 500;
 }
 
@@ -211,7 +215,7 @@ header .dindin {
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-family: Rubik;
+  font-family: "Rubik",sans-serif;
   font-weight: 700;
 }
 
