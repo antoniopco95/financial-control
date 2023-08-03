@@ -59,7 +59,7 @@ header .dindin {
   color: #000;
   text-align: center;
   font-size: 12px;
-  font-family: "Lato",sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
 }
 
@@ -87,7 +87,7 @@ header .dindin {
   color: #000;
   text-align: center;
   font-size: 14px;
-  font-family: "Lato",sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
 }
 
@@ -148,7 +148,7 @@ header .dindin {
 .resume h1 {
   color: #2f2f2f;
   font-size: 18px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 700;
 }
 
@@ -157,11 +157,10 @@ header .dindin {
 .resume-balance {
   width: 170px;
   height: 17px;
-  
+
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
-  
 }
 
 .line {
@@ -174,35 +173,35 @@ header .dindin {
 .resume-out h2 {
   color: #2f2f2f;
   font-size: 13px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 
 .resume-in h3 {
   color: #645ffb;
   font-size: 13px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 
 .resume-out h3 {
   color: #fa8c10;
   font-size: 13px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 
 .resume-balance h2 {
   color: #2f2f2f;
   font-size: 14px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 700;
 }
 
 .resume-balance h3 {
   color: #3a9ff1;
   font-size: 14px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 
@@ -215,10 +214,34 @@ header .dindin {
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-family: "Rubik",sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 700;
 }
 
 .right-side button:hover {
   cursor: pointer;
+}
+
+@media (max-width: 468px) {
+  .container-main {
+    width: 100%;
+  }
+  header {
+    justify-content: center;
+    gap: 20px;
+  }
+  .filter,.table {
+    margin-left: 40px;
+  }
+  .container-table {
+    overflow-x: scroll;
+  }
+  .right-side {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
 }

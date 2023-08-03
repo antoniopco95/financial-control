@@ -82,7 +82,7 @@ function Main() {
   function closeModal() {
     setModal(!modal);
   }
-  
+
   function handleExit() {
     removeItem("token");
     navigate("/");
@@ -90,11 +90,11 @@ function Main() {
 
   function handleSortOrder() {
     if (sortOrder === null) {
-      setSortOrder("asc"); 
+      setSortOrder("asc");
     } else if (sortOrder === "asc") {
-      setSortOrder("desc"); 
+      setSortOrder("desc");
     } else if (sortOrder === "desc") {
-      setSortOrder(null); 
+      setSortOrder(null);
     }
   }
 
@@ -118,25 +118,27 @@ function Main() {
           <img src={Filter} alt="filter" />
           <p>Filtrar</p>
         </div>
-
-        <div className="table">
-          <div className="table-header">
-            <span className="table-header-title1">
-              Data <img src={ArrowUp} alt="ArrowUp" onClick={handleSortOrder} />
-            </span>
-            <span className="table-header-title2">Dia da semana</span>
-            <span className="table-header-title3">Descrição</span>
-            <span className="table-header-title4">Categoria</span>
-            <span className="table-header-title5">Valor</span>
+        <div className="container-table">
+          <div className="table">
+            <div className="table-header">
+              <span className="table-header-title1">
+                Data{" "}
+                <img src={ArrowUp} alt="ArrowUp" onClick={handleSortOrder} />
+              </span>
+              <span className="table-header-title2">Dia da semana</span>
+              <span className="table-header-title3">Descrição</span>
+              <span className="table-header-title4">Categoria</span>
+              <span className="table-header-title5">Valor</span>
+            </div>
           </div>
+          <TableLine
+            listTransaction={listTransaction}
+            options={options}
+            handleListTransactions={handleListTransactions}
+            handleExtract={handleExtract}
+            sortOrder={sortOrder}
+          />
         </div>
-        <TableLine
-          listTransaction={listTransaction}
-          options={options}
-          handleListTransactions={handleListTransactions}
-          handleExtract={handleExtract}
-          sortOrder={sortOrder}
-        />
         <div className="right-side">
           <div className="resume">
             <h1>Resumo</h1>

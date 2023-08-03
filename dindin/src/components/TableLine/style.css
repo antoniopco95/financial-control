@@ -65,3 +65,10 @@
 .edit-transaction {
   margin-right: 13px;
 }
+
+
+@media (max-width: 468px){
+  .line-content{
+    margin-left: 40px;
+  }
+}
